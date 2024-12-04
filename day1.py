@@ -4,7 +4,7 @@
 
 import pandas as pd
 
-file = 'input.txt'
+file = 'test_input.txt'
 df = pd.read_fwf(file, names=['Col1', 'Col2'])
 
 Col1 = df['Col1'].tolist()
@@ -20,9 +20,5 @@ resultList = [abs(a - b) for a, b in zip(Col1, Col2)]
 common = set(Col1).intersection(set(Col2))
 # print(common)
 
-simScore = 0
-
-for x in common:
-    simScore += x * Col1.count(x) * Col2.count(x)
-
-print(simScore)
+simScore = [ x * Col1.count(x) * Col2.count(x) for x in common]
+print(sum(simScore))
